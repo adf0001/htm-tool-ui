@@ -1,0 +1,22 @@
+{
+  "name": "htm-tool-ui",
+  "version": "1.0.0",
+  "description": "htm-tool ui module",
+  "main": "htm-tool-ui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adf0001/htm-tool-ui.git"
+  },
+  "author": "fwg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adf0001/htm-tool-ui/issues"
+  },
+  "homepage": "https://github.com/adf0001/htm-tool-ui#readme",
+  "dependencies": {
+    "htm-tool": "^1.0.7"
+  }
+}
