@@ -135,7 +135,7 @@ var showLog= function( s ){
 			el.removeChild(el.firstChild);
 		}
 		
-		var tms= dateString19();
+		var tms= ht.dateString19();
 		el.innerHTML+="<div>* <span class='ht-cmd' onclick=\"this.textContent=this.title;this.style.color='green';this.onclick=this.className=this.title='';\" title='"+tms+"'>" + tms.slice(-8) + "</span> " + s + "</div>";
 		el.style.display= elMinimize.style.display= elClose.style.display= "";
 	}
@@ -401,7 +401,7 @@ var showPopup= function( el, modal, cb ){
 	
 	//----------------------------------------------------------------------------------------
 	
-	el= ele(el);
+	el= ht(el);
 	
 	//check closed
 	while( popupStack.length>0 ){
@@ -454,7 +454,7 @@ var showPopup= function( el, modal, cb ){
 }
 
 var hidePopup= function( el, data ){
-	el= ele(el);
+	el= ht(el);
 	
 	//find .ht-popup
 	while( el && ! el.classList.contains("ht-popup") ) { el=el.parentNode; }
