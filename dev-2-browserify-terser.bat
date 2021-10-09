@@ -1,6 +1,4 @@
 
-chcp 936
-
 for /F %%i in ('npm root -g') do ( set globalModulePath=%%i)
 
 set browserifyPath="browserify.cmd"
@@ -12,6 +10,7 @@ set module=htm-tool-ui
 if not exist ./release md release
 
 call %browserifyPath% -p %bundleCollapserPath% -o ./release/bundle.min.js -v ^
+	-t [ %globalModulePath%/stringify --extensions [.html .css .htm ] --minify true ] ^
 	-r ./%module%.js:%module%
 
 echo on
