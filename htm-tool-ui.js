@@ -518,27 +518,22 @@ var showPopupHtml = function (bodyHtml, modal, cb) {
 }
 
 var alert = function (message, modal, cb) {
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<span style='float:right'><button name='ok'>确定</button></span>", modal, cb);
+	var elPopup = showPopupHtml(require("./res/alert.htm"), modal, cb);
 
+	query_by_name_path(elPopup, ".message").innerHTML = message;
 	query_by_name_path(elPopup, ".ok").addEventListener("click", popupCloseListener);
 }
 var confirm = function (message, modal, cb) {
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<span style='float:right'>" +
-		"<button name='ok'>确定</button> " +
-		"<button name='cancel'>取消</button></span>", modal, cb);
+	var elPopup = showPopupHtml(require("./res/confirm.htm"), modal, cb);
 
+	query_by_name_path(elPopup, ".message").innerHTML = message;
 	query_by_name_path(elPopup, ".ok").addEventListener("click", popupCloseByNameListener);
 	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
 }
 var confirmYnc = function (message, modal, cb) {
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<span style='float:right'>" +
-		"<button name='yes'>是</button> " +
-		"<button name='no'>否</button> " +
-		"<button name='cancel'>取消</button></span>", modal, cb);
+	var elPopup = showPopupHtml(require("./res/confirm-ync.htm"), modal, cb);
 
+	query_by_name_path(elPopup, ".message").innerHTML = message;
 	query_by_name_path(elPopup, ".yes").addEventListener("click", popupCloseByNameListener);
 	query_by_name_path(elPopup, ".no").addEventListener("click", popupCloseByNameListener);
 	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
@@ -551,16 +546,13 @@ var promptListener = function () {
 }
 
 var prompt = function (message, defaultValue, modal, cb) {
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<input type='text' style='width:100%;' name='input'></input><br><br>" +
-		"<span style='float:right'>" +
-		"<button name='ok'>确定</button> " +
-		"<button name='cancel'>取消</button></span>", modal, cb);
+	var elPopup = showPopupHtml(require("./res/prompt.htm"), modal, cb);
 
-	if (defaultValue) query_by_name_path(elPopup, '.input').value = defaultValue;
-
+	query_by_name_path(elPopup, ".message").innerHTML = message;
 	query_by_name_path(elPopup, ".ok").addEventListener("click", promptListener);
 	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
+
+	if (defaultValue) query_by_name_path(elPopup, '.input').value = defaultValue;
 }
 
 //----------------------------------------------------------------------------------------
@@ -584,17 +576,16 @@ var selectRadioListener = function () {
 
 //item: [value,text], or single string for both value and text.
 var selectRadioList = function (message, itemList, defaultValue, modal, cb) {
-	//var nm= "ht-select-radio="+(++seed);
-	var nm = ele.id(null, "ht-select-radio-");
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<div name='input' class='ht-input ht-popup-group' value=''></div><br>" +
-		"<span style='float:right;'>" +
-		"<button name='ok'>确定</button> " +
-		"<button name='cancel'>取消</button></span>", modal, cb);
+	var elPopup = showPopupHtml(require("./res/select-list.htm"), modal, cb);
+
+	query_by_name_path(elPopup, ".message").innerHTML = message;
+	query_by_name_path(elPopup, ".ok").addEventListener("click", selectRadioListener);
+	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
 
 	var elInput = query_by_name_path(elPopup, '.input');
 	if (defaultValue) elInput.setAttribute("value", defaultValue);
-
+	
+	var nm = ele.id(null, "ht-select-radio-");
 	var i, imax = itemList.length, v, elItem, elRadio, isSelected;
 	for (i = 0; i < imax; i++) {
 		v = itemList[i];
@@ -612,9 +603,6 @@ var selectRadioList = function (message, itemList, defaultValue, modal, cb) {
 
 		elRadio.addEventListener("change", selectRadioChangeListener);
 	}
-
-	query_by_name_path(elPopup, ".ok").addEventListener("click", selectRadioListener);
-	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
 }
 
 //----------------------------------------------------------------------------------------
@@ -633,14 +621,13 @@ var selectCheckboxListener = function () {
 }
 
 var selectCheckboxList = function (message, itemList, defaultValueList, modal, cb) {
+	var elPopup = showPopupHtml(require("./res/select-list.htm"), modal, cb);
+
+	query_by_name_path(elPopup, ".message").innerHTML = message;
+	query_by_name_path(elPopup, ".ok").addEventListener("click", selectCheckboxListener);
+	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
+
 	if (!defaultValueList || typeof defaultValueList == "string") defaultValueList = [defaultValueList];
-
-	var elPopup = showPopupHtml("<div style='min-width:200px;' name='message'>" + message + "</div><br>" +
-		"<div name='input' class='ht-input ht-popup-group'></div><br>" +
-		"<span style='float:right'>" +
-		"<button name='ok'>确定</button> " +
-		"<button name='cancel'>取消</button></span>", modal, cb);
-
 	var elInput = query_by_name_path(elPopup, '.input');
 
 	var i, imax = itemList.length, v, elItem, elCheck, isSelected;
@@ -660,9 +647,6 @@ var selectCheckboxList = function (message, itemList, defaultValueList, modal, c
 
 		elCheck.addEventListener("change", selectCheckboxChangeListener);
 	}
-
-	query_by_name_path(elPopup, ".ok").addEventListener("click", selectCheckboxListener);
-	query_by_name_path(elPopup, ".cancel").addEventListener("click", popupCloseListener);
 }
 
 // module
