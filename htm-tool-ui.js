@@ -584,7 +584,7 @@ var selectRadioList = function (message, itemList, defaultValue, modal, cb) {
 
 	var elInput = query_by_name_path(elPopup, '.input');
 	if (defaultValue) elInput.setAttribute("value", defaultValue);
-	
+
 	var nm = ele.id(null, "ht-select-radio-");
 	var i, imax = itemList.length, v, elItem, elRadio, isSelected;
 	for (i = 0; i < imax; i++) {
@@ -649,6 +649,33 @@ var selectCheckboxList = function (message, itemList, defaultValueList, modal, c
 	}
 }
 
+//----------------------------------------------------------------------------------------
+
+var selectButtonList = function (message, itemList, modal, cb) {
+	var elPopup = showPopupHtml(require("./res/button-list.htm"), modal, cb);
+
+	query_by_name_path(elPopup, ".message").innerHTML = message;
+
+	var elInput = query_by_name_path(elPopup, '.input');
+
+	var i, imax = itemList.length, v, elItem;
+	for (i = 0; i < imax; i++) {
+		v = itemList[i];
+		if (!(v instanceof Array)) v = [v, v];
+
+		elItem = dom_document_tool.appendHtml(elInput,
+			"<button style='width:100%;display:block;margin-bottom:0.5em;'></button>");
+		elItem.innerHTML = v[1];
+		elItem.setAttribute("name", v[0]);
+
+		elItem.addEventListener("click", popupCloseByNameListener);
+	}
+	//add last cancel
+	elItem = dom_document_tool.appendHtml(elInput,
+		"<button style='width:100%;display:block;margin-bottom:1px;margin-top:1em;'>取消</button>");
+	elItem.addEventListener("click", popupCloseListener);
+}
+
 // module
 
 module.exports = {
@@ -679,5 +706,6 @@ module.exports = {
 	prompt: prompt,
 	selectRadioList: selectRadioList,
 	selectCheckboxList: selectCheckboxList,
+	selectButtonList: selectButtonList,
 
 };
