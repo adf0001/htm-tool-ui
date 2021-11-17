@@ -120,7 +120,7 @@ var showLog = function (s) {
 
 		var tms = tmkt.toString19();
 		el.innerHTML += "<div>* <span class='ht-cmd' " +
-			"onclick=\"if(!this.title)return;this.textContent=this.title;this.style.color='green';this.onclick=this.className=this.title='';\" " +
+			"onclick=\"if(!this.title)return;this.textContent=this.title;this.style.color='green';this.onclick=null;this.className=this.title='';\" " +
 			"title='" + tms + "'>" + tms.slice(-8) + "</span> " + s + "</div>";
 		el.style.display = elMinimize.style.display = elClose.style.display = "";
 	}
