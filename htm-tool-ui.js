@@ -26,60 +26,94 @@ var htm_tool_css = require("htm-tool-css");
 
 		//init tab control
 		htm_tool_ui.initTabControl({'spTab1':'divTab1','spTab2':'divTab2'},'spTab1');
+		//or tab/view pair array
+		htm_tool_ui.initTabControl(['spTab1', 'divTab1', 'spTab2', 'divTab2'], 'spTab1');
+
+		//get last tab id
+		assert(htm_tool_ui.getLastTabId('spTab1') === htm_tool_ui.getLastTabId('spTab2'));
+
 */
 
-var lastTabMap = null;	//map group name to last [idTab,idPannel]
+var tabInitialized = false;		//tab initialized flag
 
 var onTabClick = function () {
-	var group = this.getAttribute("ht-ui-tab-group");
+	var groupId = this.getAttribute("ht-ui-tab-group");
 	var idTab = ele.id(this);
 	var idPannel = this.getAttribute("ht-ui-tab-pannel");
 
-	var lastTabItem = lastTabMap[group];
-	if (!lastTabItem) { lastTabItem = lastTabMap[group] = ["", ""]; }
+	var elGroup = ele(groupId);
+	var lastTab = elGroup.getAttribute("ht-ui-tab-last-tab");
+	var lastView = elGroup.getAttribute("ht-ui-tab-last-view");
 
-	if (lastTabItem[0] == idTab && lastTabItem[1] == idPannel) return;
+	if (lastTab == idTab && lastView == idPannel) return;
 
 	//hide last
-	if (lastTabItem[0]) { ele(lastTabItem[0]).classList.remove("ht-tab-item-selected"); }
-	if (lastTabItem[1]) { ele(lastTabItem[1]).style.display = "none"; }
+	if (lastTab) { ele(lastTab).classList.remove("ht-tab-item-selected"); }
+	if (lastView) { ele(lastView).style.display = "none"; }
 
 	//show selected
 	ele(idTab).classList.add("ht-tab-item-selected");
 	if (idPannel) ele(idPannel).style.display = "";
 
-	lastTabItem[0] = idTab;
-	lastTabItem[1] = idPannel;
+	elGroup.setAttribute("ht-ui-tab-last-tab", idTab);
+	elGroup.setAttribute("ht-ui-tab-last-view", idPannel);
 }
 
 //return groupId
-var initTabControl = function (tabMap, tabSelected, groupId) {
+var initTabControl = function (tabPairArray, tabSelected, elGroup) {
 	//init css
-	if (!lastTabMap) {
-		lastTabMap = {};
+	if (!tabInitialized) {
+		tabInitialized = true;
 		add_css_text(require("./res/tab.css"), "ht-ui-tab-css");
 	}
 
-	if (!groupId) groupId = ele.id(null, "tab-group-");
+	var i;
+	if (!(tabPairArray instanceof Array)) {
+		var a = [];
+		for (i in tabPairArray) a.push(i, tabPairArray[i]);
+		tabPairArray = a;
+	}
 
-	var i, elTab;
-	for (i in tabMap) {
-		elTab = ele(i);
+	//prepare group
+	if (!elGroup) elGroup = ele(tabPairArray[0]);
+	var groupId = ele.id(elGroup, "tab-group-");
+
+	//init
+	var i, elTab, elView;
+	for (i = 0; i < tabPairArray.length; i += 2) {
+		elTab = ele(tabPairArray[i]);
 		elTab.setAttribute("ht-ui-tab-group", groupId);
-		elTab.setAttribute("ht-ui-tab-pannel", tabMap[i]);
 		elTab.addEventListener("click", onTabClick);
 		elTab.classList.add("ht-tab-item");
 
 		if (i == tabSelected) { elTab.classList.add("ht-tab-item-selected"); }
 		else { elTab.classList.remove("ht-tab-item-selected"); }
 
-		ele(tabMap[i]).style.display = (i == tabSelected) ? "" : "none";
+		elView = ele(tabPairArray[i + 1]);
+		elView.style.display = (i == tabSelected) ? "" : "none";
+
+		elTab.setAttribute("ht-ui-tab-pannel", ele.id(elView));
 	}
 
 	if (tabSelected) onTabClick.apply(ele(tabSelected));
 
 	return groupId;
 }
+
+//groupId: groupId or tab id
+var getLastTabId = function (groupId) {
+	var el = ele(groupId);
+	var lastId = el.getAttribute("ht-ui-tab-last-tab");
+	if (!lastId) {
+		//try get from tab
+		groupId = el.getAttribute("ht-ui-tab-group");
+		if (!groupId) return null;
+		lastId = ele(groupId).getAttribute("ht-ui-tab-last-tab");
+		if (!lastId) return null;
+	}
+	return lastId;
+}
+
 /*
 //////////////////////////////////////////////////////////////////////////////////////////
 // radio group
@@ -95,7 +129,8 @@ var initTabControl = function (tabMap, tabSelected, groupId) {
 		htm_tool_ui.initRadioGroup(['id1','id2','id3'],'id1');
 
 		//get value
-		assert(htm_tool_ui.getRadioGroupValue('id1') === htm_tool_ui.getRadioGroupValue('id2'))
+		assert(htm_tool_ui.getRadioGroupValue('id1') === htm_tool_ui.getRadioGroupValue('id2'));
+
 */
 
 var getSubRadio = function (el) {
@@ -761,6 +796,7 @@ var selectButtonList = function (message, itemList, modal, cb) {
 module.exports = {
 	//tab
 	initTabControl: initTabControl,
+	getLastTabId: getLastTabId,
 
 	//radio group
 	initRadioGroup: initRadioGroup,
