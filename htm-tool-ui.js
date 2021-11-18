@@ -25,7 +25,7 @@ var htm_tool_css = require("htm-tool-css");
 		<div id='divTab2' style='display:none;'><i>tab2 content</i></div>
 
 		//init tab control
-		htm_tool_ui.initTabControl('top',{'spTab1':'divTab1','spTab2':'divTab2'},'spTab1');
+		htm_tool_ui.initTabControl({'spTab1':'divTab1','spTab2':'divTab2'},'spTab1');
 */
 
 var lastTabMap = null;	//map group name to last [idTab,idPannel]
@@ -52,16 +52,20 @@ var onTabClick = function () {
 	lastTabItem[1] = idPannel;
 }
 
-var initTabControl = function (group, tabMap, tabSelected) {
+//return groupId
+var initTabControl = function (tabMap, tabSelected, groupId) {
 	//init css
 	if (!lastTabMap) {
 		lastTabMap = {};
 		add_css_text(require("./res/tab.css"), "ht-ui-tab-css");
 	}
+
+	if (!groupId) groupId = ele.id(null, "tab-group-");
+
 	var i, elTab;
 	for (i in tabMap) {
 		elTab = ele(i);
-		elTab.setAttribute("ht-ui-tab-group", group);
+		elTab.setAttribute("ht-ui-tab-group", groupId);
 		elTab.setAttribute("ht-ui-tab-pannel", tabMap[i]);
 		elTab.addEventListener("click", onTabClick);
 		elTab.classList.add("ht-tab-item");
@@ -71,7 +75,10 @@ var initTabControl = function (group, tabMap, tabSelected) {
 
 		ele(tabMap[i]).style.display = (i == tabSelected) ? "" : "none";
 	}
-	onTabClick.apply(ele(tabSelected));
+	
+	if(tabSelected) onTabClick.apply(ele(tabSelected));
+
+	return groupId;
 }
 
 /*

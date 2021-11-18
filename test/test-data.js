@@ -15,9 +15,9 @@ module.exports = {
 			"<div id='divTab1'><b>tab1 content</b></div>" +
 			"<div id='divTab2' style='display:none;'><i>tab2 content</i></div>";
 
-		htm_tool_ui.initTabControl('top', { 'spTab1': 'divTab1', 'spTab2': 'divTab2' }, 'spTab1');
+		var groupId = htm_tool_ui.initTabControl({ 'spTab1': 'divTab1', 'spTab2': 'divTab2' }, 'spTab1');
 
-		return 'ui test';
+		return 'ui test, groupId=' + groupId;
 	},
 	"showLog()": function (done) {
 		htm_tool_ui.showLog('some log message');
