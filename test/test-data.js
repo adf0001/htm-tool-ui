@@ -19,6 +19,19 @@ module.exports = {
 
 		return 'ui test, groupId=' + groupId;
 	},
+	"radio-group": function (done) {
+		ele('divResult2').innerHTML =
+			"<label id='id1'><input type='radio' value='a'></input>aaa</label><br>" +
+			"<label id='id2'><input type='radio' checked value='b'></input>bbb</label><br>" +
+			"<label id='id3'><input type='radio' disabled value='c'></input>ccc</label><br>" +
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('id1'))\">get</button>"+
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('id2'))\">get2</button>"+
+			"";
+
+		var groupId = htm_tool_ui.initRadioGroup(['id1', 'id2', 'id3'], 'id1');
+
+		return 'ui test, groupId=' + groupId;
+	},
 	"showLog()": function (done) {
 		htm_tool_ui.showLog('some log message');
 		return 'log ui';

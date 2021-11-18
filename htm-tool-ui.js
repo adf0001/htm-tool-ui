@@ -75,10 +75,83 @@ var initTabControl = function (tabMap, tabSelected, groupId) {
 
 		ele(tabMap[i]).style.display = (i == tabSelected) ? "" : "none";
 	}
-	
-	if(tabSelected) onTabClick.apply(ele(tabSelected));
+
+	if (tabSelected) onTabClick.apply(ele(tabSelected));
 
 	return groupId;
+}
+/*
+//////////////////////////////////////////////////////////////////////////////////////////
+// radio group
+
+	example:
+		//don't set name attribute of radio control, to avoid outside name duplication.
+
+		<label id='id1'><input type='radio' value='a'></input>aaa</label><br>
+		<label id='id2'><input type='radio' value='b' checked></input>bbb</label><br>
+		<label id='id3'><input type='radio' value='c' disabled></input>ccc</label><br>
+
+		//init radio group
+		htm_tool_ui.initRadioGroup(['id1','id2','id3'],'id1');
+
+		//get value
+		assert(htm_tool_ui.getRadioGroupValue('id1') === htm_tool_ui.getRadioGroupValue('id2'))
+*/
+
+var getSubRadio = function (el) {
+	el = ele(el);
+	return (el.tagName.toUpperCase() == "INPUT" && el.type == "radio") ? el :
+		el.querySelector("input[type='radio']");
+}
+
+var onRadioGroupClick = function () {
+	this.checked = true;		//keep checked
+
+	var groupId = this.getAttribute("ht-ui-radio-group");
+	var elGroup = ele(groupId);
+	var lastId = elGroup.getAttribute("ht-ui-radio-group-last");
+
+	var thisId = ele.id(this);
+	if (lastId == thisId) return;
+
+	//uncheck last
+	if (lastId) { ele(lastId).checked = false; }
+
+	elGroup.setAttribute("ht-ui-radio-group-last", thisId);
+}
+
+//return groupId
+var initRadioGroup = function (radioArray, radioSelected, elGroup) {
+	//prepare group id
+	if (!elGroup) elGroup = radioArray[0];
+	var groupId = ele.id(ele(elGroup));
+
+	var i, elRadio;
+	for (var i = 0; i < radioArray.length; i++) {
+		elRadio = getSubRadio(radioArray[i]);
+
+		elRadio.setAttribute("ht-ui-radio-group", groupId);
+		elRadio.addEventListener("click", onRadioGroupClick);
+		elRadio.checked = (ele(radioSelected) === elRadio);
+	}
+
+	if (radioSelected) onRadioGroupClick.apply(getSubRadio(radioSelected));
+
+	return groupId;
+}
+
+//groupId: groupId or radio id
+var getRadioGroupValue = function (groupId) {
+	var el = ele(groupId);
+	var lastId = el.getAttribute("ht-ui-radio-group-last");
+	if (!lastId) {
+		//try get from radio
+		groupId = getSubRadio(el).getAttribute("ht-ui-radio-group");
+		if (!groupId) return null;
+		lastId = ele(groupId).getAttribute("ht-ui-radio-group-last");
+		if (!lastId) return null;
+	}
+	return ele(lastId).getAttribute("value");
 }
 
 /*
@@ -688,6 +761,10 @@ var selectButtonList = function (message, itemList, modal, cb) {
 module.exports = {
 	//tab
 	initTabControl: initTabControl,
+
+	//radio group
+	initRadioGroup: initRadioGroup,
+	getRadioGroupValue: getRadioGroupValue,
 
 	//log
 	showLog: showLog,
