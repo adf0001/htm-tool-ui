@@ -27,7 +27,7 @@ var htm_tool_css = require("htm-tool-css");
 		//init tab control
 		htm_tool_ui.initTabControl({'spTab1':'divTab1','spTab2':'divTab2'},'spTab1');
 		//or tab/view pair array
-		htm_tool_ui.initTabControl(['spTab1', 'divTab1', 'spTab2', 'divTab2'], 'spTab1');
+		htm_tool_ui.initTabControl(['spTab1', 'divTab1', ['spTab2', 'divTab2'] ], 'spTab1');
 
 		//get last tab id
 		assert(htm_tool_ui.getLastTabId('spTab1') === htm_tool_ui.getLastTabId('spTab2'));
@@ -72,6 +72,10 @@ var initTabControl = function (tabPairArray, tabSelected, elGroup) {
 		var a = [];
 		for (i in tabPairArray) a.push(i, tabPairArray[i]);
 		tabPairArray = a;
+	}
+	else {
+		//flat array
+		tabPairArray = Array.prototype.concat.apply([], tabPairArray);
 	}
 
 	//prepare group
