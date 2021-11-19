@@ -13,9 +13,9 @@ module.exports = {
 			"	<span class='ht-tab-item' id='spTab2'>Tab2</span>" +
 			"</div>" +
 			"<div id='divTab1'><b>tab1 content</b></div>" +
-			"<div id='divTab2' style='display:none;'><i>tab2 content</i></div>"+
-			"<button onclick=\"alert(htm_tool_ui.getLastTabId('spTab1'))\">get</button>"+
-			"<button onclick=\"alert(htm_tool_ui.getLastTabId('spTab2'))\">get2</button>"+
+			"<div id='divTab2' style='display:none;'><i>tab2 content</i></div>" +
+			"<button onclick=\"alert(htm_tool_ui.getLastTabId('spTab1'))\">get</button>" +
+			"<button onclick=\"alert(htm_tool_ui.getLastTabId('spTab2'))\">get2</button>" +
 			"";
 
 		var groupId = htm_tool_ui.initTabControl({ 'spTab1': 'divTab1', 'spTab2': 'divTab2' }, 'spTab1');
@@ -24,14 +24,17 @@ module.exports = {
 	},
 	"radio-group": function (done) {
 		ele('divResult2').innerHTML =
-			"<label id='id1'><input type='radio' value='a'></input>aaa</label><br>" +
-			"<label id='id2'><input type='radio' checked value='b'></input>bbb</label><br>" +
-			"<label id='id3'><input type='radio' disabled value='c'></input>ccc</label><br>" +
-			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('id1'))\">get</button>"+
-			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('id2'))\">get2</button>"+
+			"<label id='group1'><input type='radio' checked value='a'></input>aaa</label><br>" +
+			"<span id='group2'>" +
+			"	<label><input type='radio' value='b'></input>bbb</label><br>" +
+			"	<label><input type='radio' disabled value='c'></input>ccc</label><br>" +
+			"	<label><input type='radio' value='d'></input>ddd</label><br>" +
+			"</span>" +
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('group1'))\">get</button>" +
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('group2'))\">get2</button>" +
 			"";
 
-		var groupId = htm_tool_ui.initRadioGroup(['id1', 'id2', 'id3'], 'id1');
+		var groupId = htm_tool_ui.initRadioGroup(['group1', 'group2'], 'b');
 
 		return 'ui test, groupId=' + groupId;
 	},
