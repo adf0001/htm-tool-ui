@@ -54,6 +54,22 @@ module.exports = {
 
 		return 'ui test, groupId=' + groupId;
 	},
+	"radio-group/2": function (done) {
+		ele('divResult2').innerHTML =
+			"<label id='group1'><input type='radio' value='a'></input>aaa</label><br>" +
+			"<span id='group2'>" +
+			"	<label><input type='radio' value='b'></input>bbb</label><br>" +
+			"	<label><input type='radio' disabled value='c'></input>ccc</label><br>" +
+			"	<label><input type='radio' value='d'></input>ddd</label><br>" +
+			"</span>" +
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('group1'))\">get</button>" +
+			"<button onclick=\"alert(htm_tool_ui.getRadioGroupValue('group2'))\">get2</button>" +
+			"";
+
+		var groupId = htm_tool_ui.initRadioGroup(['group1', 'group2']);
+
+		return 'ui test, groupId=' + groupId;
+	},
 	"showLog()": function (done) {
 		htm_tool_ui.showLog('some log message');
 		return 'log ui';

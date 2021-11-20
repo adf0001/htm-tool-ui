@@ -175,6 +175,8 @@ var initRadioGroup = function (groupArray, defaultValue, elGroup) {
 
 		for (j = 0; j < elList.length; j++) {
 			elRadio = elList[j];
+			if (!elSelected) elSelected = elRadio;	//if no defaultValue, select the 1st.
+
 			elRadio.setAttribute("ht-ui-radio-group", groupId);
 			elRadio.addEventListener("click", onRadioGroupClick);
 			elRadio.checked = (elRadio.getAttribute("value") === defaultValue);
@@ -182,7 +184,7 @@ var initRadioGroup = function (groupArray, defaultValue, elGroup) {
 		}
 	}
 
-	if (elSelected) onRadioGroupClick.apply(elSelected);
+	onRadioGroupClick.apply(elSelected);
 
 	return groupId;
 }
