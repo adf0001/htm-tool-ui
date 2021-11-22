@@ -121,13 +121,13 @@ module.exports = {
 	"popup.show() & popup.hide()": function (done) {
 		ele('divResult2').innerHTML =
 			"<div id='divPopup1' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' "+
+			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' " +
 			"	ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
 			"popup-1<hr>This is popup-1." +
 			"</div>" +
 			"</div>" +
 			"<div id='divPopup2' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' "+
+			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' " +
 			"	ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
 			"popup-2<hr>This is popup-2, modal. <br> " +
 			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1')\">popup1</span> <br> " +
@@ -174,6 +174,21 @@ module.exports = {
 		window.popupHtmlStackHtml = "title-S<hr>message-S <span class='ht-cmd' onclick='openPopupHtmlStack()'>open another</span>";
 
 		window.openPopupHtmlStack = function () { ele('btnOpenPopupS').click(); };
+
+		return 'ui test';
+	},
+
+	"width_splitter()": function (done) {
+		ele('divResult2').innerHTML =
+			"<div style='position:relative;width:300px;height:200px;'>" +
+			"	<div id='div1' style='position:absolute;left:0px;top:0px;bottom:0px;width:30%;background:#FFeeee;border:2px solid red;box-sizing: border-box;'></div>" +
+			"	<div id='div2' style='position:absolute;right:0px;top:0px;bottom:0px;width:70%;background:#eeFFee;border:2px solid green;box-sizing: border-box;'></div>" +
+			"	<div id='splitter1' style='z-index:1;position:absolute;left:100px;width:10px;top:20px;bottom:30px;border:1px solid gray;'></div>" +
+			"</div>" +
+			"<div id='div3' style='width:60px;height:100px;background:#eeeeFF;'></div>" +
+			"<br><br><br>";
+
+		htm_tool_ui.width_splitter('splitter1', ['div1', 'div3'], 'div2', 10);
 
 		return 'ui test';
 	},

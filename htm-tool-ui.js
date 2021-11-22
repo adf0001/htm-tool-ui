@@ -33,4 +33,7 @@ module.exports = {
 	selectCheckboxList: popup_common.selectCheckboxList,
 	selectButtonList: popup_common.selectButtonList,
 
+	//width splitter
+	width_splitter: require("./lib/width-splitter.js"),
+
 };
