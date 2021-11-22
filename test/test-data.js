@@ -106,7 +106,6 @@ module.exports = {
 				if (this.moveChanged) this.el1.textContent = this.el1.offsetLeft + ',' + this.el1.offsetTop;
 			},
 		});
-		myDragObject.init();
 
 		return "<span style='position:relative;border:1px solid gray;' id='spDrag1' " +
 			"	onmousedown='myDragObject.start( arguments[0], this )' " +
