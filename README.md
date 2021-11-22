@@ -1,6 +1,6 @@
 # htm-tool-ui
 
-htm-tool ui module
+htm-tool ui module set
 
 ## install
 
@@ -13,6 +13,6 @@ npm install htm-tool-ui
 ```javascript
 
 var htm_tool_ui= require( "htm-tool-ui" );
-htm_tool_ui.showLog('my message');
+htm_tool_ui.show_log('my message');
 
 ```

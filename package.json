@@ -19,6 +19,7 @@
   "dependencies": {
     "add-css-text": "^1.0.1",
     "add-event-listeners": "^1.0.2",
+    "create-assign": "^1.0.1",
     "dom-document-tool": "^1.0.1",
     "element-tool": "^1.0.2",
     "htm-tool-css": "^1.0.1",
