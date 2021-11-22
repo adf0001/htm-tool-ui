@@ -1,7 +1,7 @@
 {
   "name": "htm-tool-ui",
   "version": "1.0.4",
-  "description": "htm-tool ui module",
+  "description": "htm-tool ui module set",
   "main": "htm-tool-ui.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

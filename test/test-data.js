@@ -33,7 +33,7 @@ module.exports = {
 			"<button onclick=\"alert(htm_tool_ui.tab.getSelected('spTab2'))\">get2</button>" +
 			"";
 
-		var groupId = htm_tool_ui.tab.init(['spTab1', 'divTab1', ['spTab2', 'divTab2']], 'spTab1');
+		var groupId = htm_tool_ui.tab(['spTab1', 'divTab1', ['spTab2', 'divTab2']], 'spTab1');
 
 		return 'ui test, groupId=' + groupId;
 	},
@@ -65,7 +65,7 @@ module.exports = {
 			"<button onclick=\"alert(htm_tool_ui.radio_group.getValue('group2'))\">get2</button>" +
 			"";
 
-		var groupId = htm_tool_ui.radio_group.init(['group1', 'group2']);
+		var groupId = htm_tool_ui.radio_group(['group1', 'group2']);
 
 		return 'ui test, groupId=' + groupId;
 	},
