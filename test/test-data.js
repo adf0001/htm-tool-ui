@@ -1,12 +1,12 @@
 ﻿
 // global, for html page
 htm_tool_ui = require("../htm-tool-ui.js");
-ele = require("element-tool");
+_ele = require("element-tool");
 
 module.exports = {
 
 	"tab-control": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<div class='ht-tab-group'>" +
 			"	<span class='ht-tab-item ht-tab-item-selected' id='spTab1'>Tab1</span>" +
 			"	<span class='ht-tab-item' id='spTab2'>Tab2</span>" +
@@ -22,7 +22,7 @@ module.exports = {
 		return 'ui test, groupId=' + groupId;
 	},
 	"tab-control/pairArray": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<div class='ht-tab-group'>" +
 			"	<span class='ht-tab-item ht-tab-item-selected' id='spTab1'>Tab1</span>" +
 			"	<span class='ht-tab-item' id='spTab2'>Tab2</span>" +
@@ -38,7 +38,7 @@ module.exports = {
 		return 'ui test, groupId=' + groupId;
 	},
 	"radio-group": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<label id='group1'><input type='radio' checked value='a'></input>aaa</label><br>" +
 			"<span id='group2'>" +
 			"	<label><input type='radio' value='b'></input>bbb</label><br>" +
@@ -54,7 +54,7 @@ module.exports = {
 		return 'ui test, groupId=' + groupId;
 	},
 	"radio-group/2": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<label id='group1'><input type='radio' value='a'></input>aaa</label><br>" +
 			"<span id='group2'>" +
 			"	<label><input type='radio' value='b'></input>bbb</label><br>" +
@@ -119,7 +119,7 @@ module.exports = {
 	},
 
 	"popup.show() & popup.hide()": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<div id='divPopup1' class='ht-popup' style='display:none;'>" +
 			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' " +
 			"	ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
@@ -150,36 +150,36 @@ module.exports = {
 			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.popup.show('divPopup3',1,function(err,data){if(err||data)alert('popup3 at btn returned: error='+err+', data='+data);})\">popup-3, stack</button> " +
 			"";
 
-		ele('btnOpenPopup1').click();
+		_ele('btnOpenPopup1').click();
 		return 'ui test';
 	},
 	"popup.showHtml()": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<label><input id='chkModaless' type='checkbox' checked></input>modal / default</label><br>" +
-			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.showHtml('title-1<hr>message-1',ele('chkModaless').checked)\">popup.showHtml()</button> " +
-			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.alert('message-2, <span name=ok>ok test</span>',ele('chkModaless').checked )\">alert()</button> " +
-			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3',ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()</button> " +
-			"<button id='btnOpenPopup4' onclick=\"htm_tool_ui.confirmYnc('message-4',ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirmYnc()</button> " +
-			"<button id='btnOpenPopup5' onclick=\"htm_tool_ui.prompt('message-5','default-value',ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">prompt()</button> " +
-			"<button id='btnOpenPopupS' onclick=\"htm_tool_ui.popup.showHtml(popupHtmlStackHtml+'<br>'+(new Date()),ele('chkModaless').checked)\">popup.showHtml-stack</button> " +
-			"<button id='btnOpenPopupSelect' onclick=\"htm_tool_ui.selectRadioList('select message 1',['aaa',['bbb','文本bbb'],'ccc'],'bbb',ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectRadioList()</button> " +
-			"<button id='btnOpenPopupSelect-2' onclick=\"htm_tool_ui.selectRadioList('select message 1',['aaa',['bbb','文本bbb'],'ccc'],'',ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\" title='if select void, exception raise and stop the process'>selectRadioList()-2/void</button> " +
-			"<button id='btnOpenPopupSelect2' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb'],'ccc'],['bbb','ccc'],ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectCheckboxList()</button> " +
-			"<button id='btnOpenPopupSelect2-2' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb'],'ccc'],null,ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\" title='if select void, return empty list'>selectCheckboxList()-2/void</button> " +
-			"<button id='btnOpenPopupSelect2-3' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc','ccc2','ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],['bbb','ccc'],ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectCheckboxList()-3</button> " +
-			"<button id='btnOpenPopupSelect2-4' onclick=\"htm_tool_ui.selectButtonList('select message 3',['aaa',['bbb','文本bbb'],'ccc'],ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()</button> " +
-			"<button id='btnOpenPopupSelect2-5' onclick=\"htm_tool_ui.selectButtonList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc','ccc2','ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()-2</button> " +
+			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.showHtml('title-1<hr>message-1',_ele('chkModaless').checked)\">popup.showHtml()</button> " +
+			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.alert('message-2, <span name=ok>ok test</span>',_ele('chkModaless').checked )\">alert()</button> " +
+			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()</button> " +
+			"<button id='btnOpenPopup4' onclick=\"htm_tool_ui.confirmYnc('message-4',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirmYnc()</button> " +
+			"<button id='btnOpenPopup5' onclick=\"htm_tool_ui.prompt('message-5','default-value',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">prompt()</button> " +
+			"<button id='btnOpenPopupS' onclick=\"htm_tool_ui.popup.showHtml(popupHtmlStackHtml+'<br>'+(new Date()),_ele('chkModaless').checked)\">popup.showHtml-stack</button> " +
+			"<button id='btnOpenPopupSelect' onclick=\"htm_tool_ui.selectRadioList('select message 1',['aaa',['bbb','文本bbb'],'ccc'],'bbb',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectRadioList()</button> " +
+			"<button id='btnOpenPopupSelect-2' onclick=\"htm_tool_ui.selectRadioList('select message 1',['aaa',['bbb','文本bbb'],'ccc'],'',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\" title='if select void, exception raise and stop the process'>selectRadioList()-2/void</button> " +
+			"<button id='btnOpenPopupSelect2' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb'],'ccc'],['bbb','ccc'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectCheckboxList()</button> " +
+			"<button id='btnOpenPopupSelect2-2' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb'],'ccc'],null,_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\" title='if select void, return empty list'>selectCheckboxList()-2/void</button> " +
+			"<button id='btnOpenPopupSelect2-3' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc','ccc2','ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],['bbb','ccc'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectCheckboxList()-3</button> " +
+			"<button id='btnOpenPopupSelect2-4' onclick=\"htm_tool_ui.selectButtonList('select message 3',['aaa',['bbb','文本bbb'],'ccc'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()</button> " +
+			"<button id='btnOpenPopupSelect2-5' onclick=\"htm_tool_ui.selectButtonList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc','ccc2','ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()-2</button> " +
 			"";
 
 		window.popupHtmlStackHtml = "title-S<hr>message-S <span class='ht-cmd' onclick='openPopupHtmlStack()'>open another</span>";
 
-		window.openPopupHtmlStack = function () { ele('btnOpenPopupS').click(); };
+		window.openPopupHtmlStack = function () { _ele('btnOpenPopupS').click(); };
 
 		return 'ui test';
 	},
 
 	"width_splitter()": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<div style='position:relative;width:300px;height:200px;'>" +
 			"	<div id='div1' style='position:absolute;left:0px;top:0px;bottom:0px;width:30%;background:#FFeeee;border:2px solid red;box-sizing: border-box;'></div>" +
 			"	<div id='div2' style='position:absolute;right:0px;top:0px;bottom:0px;width:70%;background:#eeFFee;border:2px solid green;box-sizing: border-box;'></div>" +
@@ -198,7 +198,7 @@ module.exports = {
 	},
 
 	"width_splitter()/em": function (done) {
-		ele('divResult2').innerHTML =
+		_ele('divResult2').innerHTML =
 			"<div style='position:relative;width:40em;height:200px;'>" +
 			"	<div id='div1' style='position:absolute;left:0px;top:0px;bottom:0px;width:10em;background:#FFeeee;border:2px solid red;box-sizing: border-box;'></div>" +
 			"	<div id='div2' style='position:absolute;right:0px;top:0px;bottom:0px;width:30em;background:#eeFFee;border:2px solid green;box-sizing: border-box;'></div>" +
