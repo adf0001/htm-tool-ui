@@ -155,7 +155,7 @@ module.exports = {
 	},
 	"popup.showHtml()": function (done) {
 		_ele('divResult2').innerHTML =
-			"<label><input id='chkModaless' type='checkbox' checked></input>modal / default</label><br>" +
+			"<label><input id='chkModaless' type='checkbox'></input>modal ( default modeless)</label><br>" +
 			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.showHtml('title-1<hr>message-1',_ele('chkModaless').checked)\">popup.showHtml()</button> " +
 			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.alert('message-2, <span name=ok>ok test</span>',_ele('chkModaless').checked )\">alert()</button> " +
 			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()</button> " +
@@ -170,7 +170,7 @@ module.exports = {
 			"<button id='btnOpenPopupSelect2-2' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb'],'ccc'],null,_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\" title='if select void, return empty list'>selectCheckboxList()-2/void</button> " +
 			"<button id='btnOpenPopupSelect2-3' onclick=\"htm_tool_ui.selectCheckboxList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc','ccc2','ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],['bbb','ccc'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectCheckboxList()-3</button> " +
 			"<button id='btnOpenPopupSelect2-4' onclick=\"htm_tool_ui.selectButtonList('select message 3',['aaa',['bbb','文本bbb'],'ccc'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()</button> " +
-			"<button id='btnOpenPopupSelect2-5' onclick=\"htm_tool_ui.selectButtonList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc',['ccc2','<div style=\\'color:red;text-align:left;\\'>ccc2</div>'],'ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()-2</button> " +
+			"<button id='btnOpenPopupSelect2-5' onclick=\"htm_tool_ui.selectButtonList('select message 2',['aaa',['bbb','文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb 文本bbb '],'ccc',['ccc2','<div style=\\'color:red;text-align:left;\\'>ccc2</div>'],'ccc3','ccc4','ccc5','ccc6','ccc7','ccc8','ccc9','ccc10','ccc11','ccc12','ccc13','ccc14'],{modal:_ele('chkModaless').checked,maxHeight:'15em'},function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">selectButtonList()-2</button> " +
 			"";
 
 		window.popupHtmlStackHtml = "title-S<hr>message-S <span class='ht-cmd' onclick='openPopupHtmlStack()'>open another</span>";

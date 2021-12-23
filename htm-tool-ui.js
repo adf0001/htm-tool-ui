@@ -4,6 +4,10 @@
 "use strict";
 
 var popup_common = require("./lib/popup-common.js");
+var show_log= require("./lib/show-log.js");
+var radio_group= require("./lib/radio-group.js");
+var popup= require("./lib/popup.js");
+var width_splitter= require("./lib/width-splitter.js");
 
 // module
 
@@ -12,16 +16,18 @@ module.exports = {
 	tab: require("./lib/tab.js"),
 
 	//radio group
-	radio_group: require("./lib/radio-group.js"),
+	radio_group: radio_group,
+	radioGroup: radio_group,
 
 	//show log
-	show_log: require("./lib/show-log.js"),
+	show_log: show_log,
+	showLog: show_log,
 
 	//drag
 	drag: require("./lib/drag-object.js"),
 
 	//popup
-	popup: require("./lib/popup.js"),
+	popup: popup,
 
 	//popup-common
 
@@ -34,6 +40,7 @@ module.exports = {
 	selectButtonList: popup_common.selectButtonList,
 
 	//width splitter
-	width_splitter: require("./lib/width-splitter.js"),
+	width_splitter: width_splitter,
+	widthSplitter: width_splitter,
 
 };

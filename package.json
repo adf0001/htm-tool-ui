@@ -1,6 +1,6 @@
 {
   "name": "htm-tool-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "htm-tool ui module set",
   "main": "htm-tool-ui.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "dom-document-tool": "^1.0.1",
     "element-tool": "^1.0.3",
     "htm-tool-css": "^1.0.1",
+    "options-from-options": "^1.0.1",
     "query-by-name-path": "^1.0.1",
     "tmkt": "^1.0.6",
     "to-px-by-offset": "^1.0.1"
