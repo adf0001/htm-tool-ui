@@ -1,6 +1,6 @@
 {
   "name": "htm-tool-ui",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "htm-tool ui module set",
   "main": "htm-tool-ui.js",
   "scripts": {
