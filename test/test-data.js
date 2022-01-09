@@ -120,7 +120,7 @@ module.exports = {
 
 	"popup.show() & popup.hide()": function (done) {
 		_ele('divResult2').innerHTML =
-			"<div id='divPopup1' class='ht-popup' style='display:none;'>" +
+			"<div id='divPopup1' style='display:none;'>" +
 			"<div class='ht-popup-body' >" +
 			"popup-1<hr>This is popup-1." +
 			"</div>" +
@@ -143,7 +143,7 @@ module.exports = {
 			"<center><button onclick=\"htm_tool_ui.popup.hide('divPopup3','fromClose')\">close</button></center>" +
 			"</div>" +
 			"</div>" +
-			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.show('divPopup1')\">popup-1</button> " +
+			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.show('divPopup1',{noDrag:true})\">popup-1</button> " +
 			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.popup.show('divPopup2',1)\">popup-2, modal</button> " +
 			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.popup.show('divPopup3',1,function(err,data){if(err||data)alert('popup3 at btn returned: error='+err+', data='+data);})\">popup-3, stack</button> " +
 			"";
@@ -154,10 +154,10 @@ module.exports = {
 	"popup.showHtml()": function (done) {
 		_ele('divResult2').innerHTML =
 			"<label><input id='chkModaless' type='checkbox'></input>modal ( default modeless)</label><br>" +
-			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.showHtml('title-1<hr>message-1',_ele('chkModaless').checked)\">popup.showHtml()</button> " +
+			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.showHtml('title-1<hr>message-1',{noDrag:true,modal:_ele('chkModaless').checked,})\">popup.showHtml()</button> " +
 			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.alert('message-2, <span name=ok>ok test</span>',_ele('chkModaless').checked )\">alert()</button> " +
 			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()</button> " +
-			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3 message-3 message-3 message-3',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()-2</button> " +
+			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.confirm('message-3 message-3 message-3 message-3<br> no drag',{noDrag:true,modal:_ele('chkModaless').checked},function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirm()-2</button> " +
 			"<button id='btnOpenPopup4' onclick=\"htm_tool_ui.confirmYnc('message-4',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">confirmYnc()</button> " +
 			"<button id='btnOpenPopup5' onclick=\"htm_tool_ui.prompt('message-5','default-value',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">prompt()</button> " +
 			"<button id='btnOpenPopup5' onclick=\"htm_tool_ui.prompt('add new project path','default-value',_ele('chkModaless').checked,function(err,data){if(err||data)alert('returned: error='+err+', data='+data);})\">prompt()-2</button> " +
