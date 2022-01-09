@@ -121,14 +121,12 @@ module.exports = {
 	"popup.show() & popup.hide()": function (done) {
 		_ele('divResult2').innerHTML =
 			"<div id='divPopup1' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' " +
-			"	ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
+			"<div class='ht-popup-body' >" +
 			"popup-1<hr>This is popup-1." +
 			"</div>" +
 			"</div>" +
 			"<div id='divPopup2' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' " +
-			"	ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
+			"<div class='ht-popup-body' >" +
 			"popup-2<hr>This is popup-2, modal. <br> " +
 			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1')\">popup1</span> <br> " +
 			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2',1)\">popup2</span>, will fail <br> " +
@@ -137,7 +135,7 @@ module.exports = {
 			"</div>" +
 			"</div>" +
 			"<div id='divPopup3' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' onmousedown='htm_tool_ui.drag.start( arguments[0], this )' ontouchstart='htm_tool_ui.drag.start( arguments[0], this )'>" +
+			"<div class='ht-popup-body' >" +
 			"popup-3<hr>This is popup-3, stack. <br> " +
 			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1')\">popup1</span> <br> " +
 			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2')\">popup2</span>, modaless, maybe fail <br> " +
@@ -193,7 +191,7 @@ module.exports = {
 			"	<div id='div3' style='position:absolute;left:0px;top:0px;bottom:0px;right:70%;background:#FFeeee;border:2px solid red;box-sizing: border-box;'></div>" +
 			"	<div id='div4' style='position:absolute;right:0px;top:0px;bottom:0px;left:30%;background:#eeFFee;border:2px solid green;box-sizing: border-box;'></div>" +
 			"</div>" +
-			"<div id='div5' style='width:60px;height:100px;background:#eeeeFF;'></div>" +
+			"<div id='div5' style='width:60px;height:100px;background:yellow;'></div>" +
 			"<br><br><br>";
 
 		htm_tool_ui.width_splitter('splitter1', ['div1', 'div5'], 'div3', 'div4', 'div2', 10);
@@ -212,7 +210,7 @@ module.exports = {
 			"	<div id='div3' style='position:absolute;left:0px;top:0px;bottom:0px;right:10em;background:#FFeeee;border:2px solid red;box-sizing: border-box;'></div>" +
 			"	<div id='div4' style='position:absolute;right:0px;top:0px;bottom:0px;left:30em;background:#eeFFee;border:2px solid green;box-sizing: border-box;'></div>" +
 			"</div>" +
-			"<div id='div5' style='width:15em;height:100px;background:#eeeeFF;'></div>" +
+			"<div id='div5' style='width:15em;height:100px;background:yellow;'></div>" +
 			"<br><br><br>";
 
 		htm_tool_ui.width_splitter('splitter1', ['div1', 'div5'], 'div3', 'div4', 'div2', 10);
