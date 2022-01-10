@@ -29,6 +29,9 @@ module.exports = {
 	//popup
 	popup: popup,
 
+	showPopup: popup.show,
+	hidePopup: popup.hide,
+
 	showPopupHtml: popup.showHtml,
 
 	//popup-common
