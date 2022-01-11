@@ -121,31 +121,31 @@ module.exports = {
 	"popup.show() & popup.hide()": function (done) {
 		_ele('divResult2').innerHTML =
 			"<div id='divPopup1' style='display:none;'>" +
-			"<div class='ht-popup-body' >" +
-			"<span>popup-1</span><hr>This is popup-1." +
-			"</div>" +
+			"	<div class='ht-popup-body' >" +
+			"		<span>popup-1</span><hr>This is popup-1." +
+			"	</div>" +
 			"</div>" +
 			"<div id='divPopup2' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' >" +
-			"popup-2<hr>This is popup-2, modal. <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1',{dragMode:'first'})\">popup1</span> <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2',1)\">popup2</span>, will fail <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup3',1)\">popup3</span>, maybe fail <br> " +
-			"<center><button onclick=\"htm_tool_ui.popup.hide('divPopup2')\">close</button></center>" +
-			"</div>" +
+			"	<div class='ht-popup-body' >" +
+			"		popup-2<hr>This is popup-2, modal. <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1',{dragMode:'first'})\">popup1</span>, title drag <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2',1)\">popup2</span>, will fail <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup3',1)\">popup3</span>, maybe fail <br> " +
+			"		<center><button onclick=\"htm_tool_ui.popup.hide('divPopup2')\">close</button></center>" +
+			"	</div>" +
 			"</div>" +
 			"<div id='divPopup3' class='ht-popup' style='display:none;'>" +
-			"<div class='ht-popup-body' >" +
-			"popup-3<hr>This is popup-3, stack. <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1')\">popup1</span> <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2')\">popup2</span>, modaless, maybe fail <br> " +
-			"<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup3',1)\">popup3</span>, will fail <br> " +
-			"<center><button onclick=\"htm_tool_ui.popup.hide('divPopup3','fromClose')\">close</button></center>" +
-			"</div>" +
+			"	<div class='ht-popup-body' >" +
+			"		popup-3<hr>This is popup-3, stack. <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup1',{maximized:true})\">popup1</span>, maximized <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup2',{maximizeButton:true})\">popup2</span>, modaless, maybe fail <br> " +
+			"		<span class='ht-cmd' onclick=\"htm_tool_ui.popup.show('divPopup3',1)\">popup3</span>, will fail <br> " +
+			"		<center><button onclick=\"htm_tool_ui.popup.hide('divPopup3','fromClose')\">close</button></center>" +
+			"	</div>" +
 			"</div>" +
 			"<button id='btnOpenPopup1' onclick=\"htm_tool_ui.popup.show('divPopup1',{dragMode:'none'})\">popup-1</button> " +
 			"<button id='btnOpenPopup2' onclick=\"htm_tool_ui.popup.show('divPopup2',1)\">popup-2, modal</button> " +
-			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.popup.show('divPopup3',1,function(err,data){if(err||data)alert('popup3 at btn returned: error='+err+', data='+data);})\">popup-3, stack</button> " +
+			"<button id='btnOpenPopup3' onclick=\"htm_tool_ui.popup.show('divPopup3',{modal:true,maximizeButton:true},function(err,data){if(err||data)alert('popup3 at btn returned: error='+err+', data='+data);})\">popup-3, stack</button> " +
 			"";
 
 		_ele('btnOpenPopup1').click();
