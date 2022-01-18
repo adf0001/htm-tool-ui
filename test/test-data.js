@@ -46,7 +46,9 @@ module.exports = {
 			"	<label><input type='radio' value='d'></input>ddd</label><br>" +
 			"</span>" +
 			"<button onclick=\"alert(htm_tool_ui.radio_group.getValue('group1'))\">get</button>" +
-			"<button onclick=\"alert(htm_tool_ui.radio_group.getValue('group2'))\">get2</button>" +
+			"<button onclick=\"alert(htm_tool_ui.radio_group.getValue('group2'))\">get2</button><br>" +
+			"<button onclick=\"htm_tool_ui.radio_group.setValue('group1','c')\">set c</button>" +
+			"<button onclick=\"htm_tool_ui.radio_group.setValue('group2','d')\">set d</button>" +
 			"";
 
 		var groupId = htm_tool_ui.radio_group.init(['group1', 'group2'], 'b');
