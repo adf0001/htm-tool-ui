@@ -1,4 +1,4 @@
-.ht-popup{
+.ht.popup{
 	position:fixed;
 	left:0px;
 	top:0px;
@@ -6,7 +6,7 @@
 	bottom:0px;
 	text-align:center;
 }
-.ht-popup-back{
+.ht.popup-back{
 	position:absolute;
 	left:0px;
 	top:0px;
@@ -15,7 +15,7 @@
 	background:#eee;
 	opacity:0.5;
 }
-.ht-popup-body{
+.ht.popup-body{
 	display:inline-block;
 	position:relative;
 	margin-top:10%;
@@ -27,10 +27,10 @@
 	text-align:left;
 	overflow:auto;
 }
-.ht-popup-modal{
+.ht.popup-modal{
 	border-radius:0px;
 }
-.ht-popup-group{
+.ht.popup-group{
 	border:1px solid #ccc;
 	padding:0.2em;
 	max-height:10em;

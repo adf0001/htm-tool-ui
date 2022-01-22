@@ -1,8 +1,8 @@
-.ht-tab-group{
+.ht.tab-group{
 	border-bottom:1px solid black;
 	margin-bottom:0.5em;
 }
-.ht-tab-item{
+.ht.tab-item{
 	display:inline-block;
 	padding:0.2em 0.5em;
 	margin-left:0.5em;
@@ -15,7 +15,7 @@
 	border-top:0px solid #eee;
 	border-right:1px solid #eee;
 }
-.ht-tab-item-selected{
+.ht.tab-item.selected{
 	background:white;
 	top:1px;
 	cursor:default;
