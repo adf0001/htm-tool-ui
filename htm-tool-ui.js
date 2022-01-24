@@ -8,6 +8,7 @@ var show_log = require("./lib/show-log.js");
 var radio_group = require("./lib/radio-group.js");
 var popup = require("./lib/popup.js");
 var width_splitter = require("./lib/width-splitter.js");
+var htm_tool_css = require("htm-tool-css");
 
 // module
 
@@ -47,5 +48,9 @@ module.exports = {
 	//width splitter
 	width_splitter: width_splitter,
 	widthSplitter: width_splitter,
+
+	//htm_tool_css
+	setClass: htm_tool_css,
+	setElClass: htm_tool_css.setEl,
 
 };

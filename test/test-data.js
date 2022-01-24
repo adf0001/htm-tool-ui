@@ -220,6 +220,12 @@ module.exports = {
 		return 'ui test';
 	},
 
+	"link check": function (done) {
+		done(!(
+			htm_tool_ui.setClass && htm_tool_ui.setElClass
+		));
+	},
+
 };
 
 // for html page

@@ -1,6 +1,6 @@
 {
   "name": "htm-tool-ui",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "htm-tool ui module set",
   "main": "htm-tool-ui.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "create-assign": "^1.0.1",
     "dom-document-tool": "^1.0.2",
     "element-tool": "^1.0.4",
-    "htm-tool-css": "^1.0.4",
+    "htm-tool-css": "^1.0.5",
     "insert-adjacent-return": "^1.0.1",
     "options-from-options": "^1.0.1",
     "query-by-name-path": "^1.0.1",
