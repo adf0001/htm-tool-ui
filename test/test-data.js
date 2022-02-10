@@ -1,7 +1,7 @@
 ﻿
 // global, for html page
 htm_tool_ui = require("../htm-tool-ui.js");
-_ele = require("element-tool");
+_ele = require("ele-tool");
 
 module.exports = {
 
