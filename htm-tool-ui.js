@@ -5,9 +5,9 @@
 
 var popup_common = require("./lib/popup-common.js");
 var show_log = require("./lib/show-log.js");
-var radio_group = require("./lib/radio-group.js");
+var radio_group = require("radio-group-tool");
 var popup = require("./lib/popup.js");
-var width_splitter = require("./lib/width-splitter.js");
+var width_splitter = require("width-splitter");
 var htm_tool_css = require("htm-tool-css");
 
 // module
@@ -25,7 +25,7 @@ module.exports = {
 	showLog: show_log,
 
 	//drag
-	drag: require("./lib/drag-object.js"),
+	drag: require("drag-object"),
 
 	//popup
 	popup: popup,
