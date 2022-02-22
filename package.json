@@ -1,6 +1,6 @@
 {
   "name": "htm-tool-ui",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "htm-tool ui module set",
   "main": "htm-tool-ui.js",
   "scripts": {
@@ -17,19 +17,12 @@
   },
   "homepage": "https://github.com/adf0001/htm-tool-ui#readme",
   "dependencies": {
-    "add-css-text": "^1.0.2",
-    "create-assign": "^1.0.1",
-    "dom-document-tool": "^1.0.2",
     "drag-object": "^1.0.1",
-    "ele-id": "^1.0.2",
-    "ele-tool": "^1.0.2",
-    "htm-tool-css": "^1.0.6",
-    "insert-adjacent-return": "^1.0.1",
-    "options-from-options": "^1.0.1",
     "query-by-name-path": "^1.0.1",
-    "radio-group-tool": "^1.0.1",
-    "tmkt": "^1.0.7",
-    "to-px-by-offset": "^1.0.1",
-    "width-splitter": "^1.0.1"
+    "radio-group-tool": "^1.0.2",
+    "show-log-tool": "^1.0.1",
+    "simple-popup-tool": "^1.0.1",
+    "tab-control-tool": "^1.0.2",
+    "width-splitter": "^1.0.2"
   }
 }

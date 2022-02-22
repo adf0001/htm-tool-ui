@@ -3,18 +3,20 @@
 
 "use strict";
 
-var popup_common = require("./lib/popup-common.js");
-var show_log = require("./lib/show-log.js");
+var show_log = require("show-log-tool");
 var radio_group = require("radio-group-tool");
-var popup = require("./lib/popup.js");
+var simple_popup_tool = require("simple-popup-tool");
 var width_splitter = require("width-splitter");
 var htm_tool_css = require("htm-tool-css");
+var drag_object = require("drag-object");
+var tab_control_tool = require("tab-control-tool");
 
 // module
 
 module.exports = {
 	//tab
-	tab: require("./lib/tab.js"),
+	tab_control_tool: tab_control_tool,
+	tab: tab_control_tool,
 
 	//radio group
 	radio_group: radio_group,
@@ -25,31 +27,34 @@ module.exports = {
 	showLog: show_log,
 
 	//drag
-	drag: require("drag-object"),
+	drag_object: drag_object,
+	drag: drag_object,
 
 	//popup
-	popup: popup,
+	simple_popup_tool: simple_popup_tool,
+	popup: simple_popup_tool,
 
-	showPopup: popup.show,
-	hidePopup: popup.hide,
+	showPopup: simple_popup_tool.show,
+	hidePopup: simple_popup_tool.hide,
 
-	showPopupHtml: popup.showHtml,
+	showPopupHtml: simple_popup_tool.showHtml,
 
 	//popup-common
 
-	alert: popup_common.alert,
-	confirm: popup_common.confirm,
-	confirmYnc: popup_common.confirmYnc,
-	prompt: popup_common.prompt,
-	selectRadioList: popup_common.selectRadioList,
-	selectCheckboxList: popup_common.selectCheckboxList,
-	selectButtonList: popup_common.selectButtonList,
+	alert: simple_popup_tool.alert,
+	confirm: simple_popup_tool.confirm,
+	confirmYnc: simple_popup_tool.confirmYnc,
+	prompt: simple_popup_tool.prompt,
+	selectRadioList: simple_popup_tool.selectRadioList,
+	selectCheckboxList: simple_popup_tool.selectCheckboxList,
+	selectButtonList: simple_popup_tool.selectButtonList,
 
 	//width splitter
 	width_splitter: width_splitter,
 	widthSplitter: width_splitter,
 
 	//htm_tool_css
+	htm_tool_css: htm_tool_css,
 	setClass: htm_tool_css,
 	setElClass: htm_tool_css.setEl,
 

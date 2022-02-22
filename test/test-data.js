@@ -1,7 +1,7 @@
 ﻿
 // global, for html page
 htm_tool_ui = require("../htm-tool-ui.js");
-_ele = require("ele-tool");
+_ele = require("get-element-by-id");
 
 module.exports = {
 
@@ -221,9 +221,13 @@ module.exports = {
 	},
 
 	"link check": function (done) {
-		done(!(
-			htm_tool_ui.setClass && htm_tool_ui.setElClass
-		));
+		for (var i in htm_tool_ui) {
+			if (typeof htm_tool_ui[i] === "undefined") {
+				done("undefined: " + i)
+				return;
+			}
+		}
+		done(false);
 	},
 
 };
