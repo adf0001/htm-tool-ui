@@ -16,6 +16,7 @@ var tab_control_tool = require("tab-control-tool");
 module.exports = {
 	//tab
 	tab_control_tool: tab_control_tool,
+
 	tab: tab_control_tool,
 
 	//radio group
@@ -28,10 +29,13 @@ module.exports = {
 
 	//drag
 	drag_object: drag_object,
+	dragObject: drag_object,
+
 	drag: drag_object,
 
 	//popup
 	simple_popup_tool: simple_popup_tool,
+
 	popup: simple_popup_tool,
 
 	showPopup: simple_popup_tool.show,
@@ -55,6 +59,7 @@ module.exports = {
 
 	//htm_tool_css
 	htm_tool_css: htm_tool_css,
+
 	setClass: htm_tool_css,
 	setElClass: htm_tool_css.setEl,
 
